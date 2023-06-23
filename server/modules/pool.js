@@ -28,8 +28,10 @@ else {
   };
   // If we need a username and password, these will be put in the .env file and
   // added here here
-  if (process.env.DB_USRENAME && process.env.DB_PASSWORD) {
-    pool_args.user = process.env.DB_USERNAME;
+  if (process.env.DB_USER) {
+    pool_args.user = process.env.DB_USER;
+  }
+  if (process.env.DB_PASSWORD) {
     pool_args.password = process.env.DB_PASSWORD;
   }
   pool = new pg.Pool(pool_args);
