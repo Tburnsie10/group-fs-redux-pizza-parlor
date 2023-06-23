@@ -1,8 +1,10 @@
 import React from 'react';
-import axios from 'axios';
+import { getPizzas } from "../../modules/pizza.request";
 import './App.css';
 
 function App() {
+
+  getPizzas().then(console.log);
 
   return (
     <div className='App'>
