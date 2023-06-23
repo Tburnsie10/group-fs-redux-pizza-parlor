@@ -1,13 +1,16 @@
-import React from 'react';
-import { getPizzas } from "../../modules/pizza.request";
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getPizzas } from '../../modules/pizza.request';
 import './App.css';
-import { useSelector } from 'react-redux';
 
 function App() {
-  const { pizzaList } = useSelector((store) => store);
-  console.log(pizzaList);
+  const dispatch = useDispatch();
 
-  getPizzas().then(console.log);
+  useEffect(() => {
+    getPizzas().then((pizza) => {
+      dispatch({ type: 'SET_PIZZA_LIST', payload: pizza });
+    });
+  }, []);
 
   return (
     <div className="App">

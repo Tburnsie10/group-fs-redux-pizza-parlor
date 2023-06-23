@@ -1,5 +1,7 @@
 export const pizzaListReducer = (state = [], action) => {
   switch (action.type) {
+    case 'SET_PIZZA_LIST':
+      return action.payload;
     case 'ADD_PIZZA':
       return [...state, action.payload];
     case 'REMOVE_PIZZA':
