@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getPizzas } from '../../modules/pizza.request';
@@ -17,6 +18,7 @@ function App() {
       <header className="App-header">
         <h1 className="App-title">Prime Pizza</h1>
       </header>
+      
 
       <img src="images/pizza_photo.png" />
       <p>Pizza is great.</p>
