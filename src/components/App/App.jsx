@@ -22,14 +22,7 @@ function App() {
   return (
     <>
     <div className="App">
-<<<<<<< HEAD
       <Header />
-=======
-      <header className="App-header">
-        <h1 className="App-title">Prime Pizza</h1>
-      </header>
->>>>>>> 7dbc50e (got pizzaList selected)
-
       <img src="images/pizza_photo.png" />
       <p>Pizza is great.</p>
     </div>
