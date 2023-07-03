@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { useSelector } from 'react-redux';
 import { BsFillCartFill } from 'react-icons/bs';
 import {
   DropdownMenu,
@@ -9,11 +10,8 @@ import {
 import CartDropdownItem from './CartDropdownItem';
 
 export default function CartDropdown() {
-  const cartItems = [
-    { name: 'Cheese', price: 12.99 },
-    { name: 'Pepperoni', price: 19.99 },
-    { name: 'Sausage', price: 19.99 },
-  ];
+  const cartItems = useSelector((store) => store.cart);
+  const cartTotal = cartItems.reduce((a, b) => a + Number(b.price), 0);
 
   return (
     <UncontrolledDropdown>
@@ -23,7 +21,7 @@ export default function CartDropdown() {
       >
         <BsFillCartFill size={22} />
         {/* replace with actual price */}
-        Total: $32.98
+        Total: ${cartTotal}
       </DropdownToggle>
       <DropdownMenu>
         <DropdownItem header>Items</DropdownItem>

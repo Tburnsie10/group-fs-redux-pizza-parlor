@@ -3,7 +3,8 @@ export const cartReducer = (state = [], action) => {
     case 'ADD_TO_CART':
       return [...state, action.payload];
     case 'REMOVE_FROM_CART':
-      return [...state.filter((item) => item.id !== action.payload.id)];
+      // The payload in this case *is* the id
+      return [...state.filter((id) => id !== action.payload)];
     default:
       return state;
   }
