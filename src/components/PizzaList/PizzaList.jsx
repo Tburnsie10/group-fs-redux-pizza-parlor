@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPizzas } from '../../modules/pizza.request';
 import {
+  Button,
   ListGroup,
   ListGroupItem,
   ListGroupItemHeading,
@@ -31,7 +32,10 @@ export default function PizzaList() {
             <ListGroupItemHeading>
               {pizza.name} ${pizza.price}
             </ListGroupItemHeading>
-            <ListGroupItemText>{pizza.description}</ListGroupItemText>
+            <ListGroupItemText>
+              {pizza.description}
+            </ListGroupItemText>
+            <Button>Add to Cart</Button>
           </ListGroupItem>
         ))}
       </ListGroup>
