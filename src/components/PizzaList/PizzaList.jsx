@@ -21,7 +21,7 @@ export default function PizzaList() {
   }, []);
 
   const addPizzaToCart = (pizza) => {
-    dispatch({ type: 'ADD_TO_CART', payload: pizza.id });
+    dispatch({ type: 'ADD_TO_CART', payload: pizza });
   };
 
   return (
