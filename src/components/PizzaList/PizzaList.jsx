@@ -13,6 +13,7 @@ import './PizzaList.css';
 export default function PizzaList() {
   const dispatch = useDispatch();
   const pizzaList = useSelector((store) => store.pizza);
+  const cart = useSelector((store) => store.cart);
 
   useEffect(() => {
     getPizzas().then((pizzas) => {
@@ -21,7 +22,11 @@ export default function PizzaList() {
   }, []);
 
   const addPizzaToCart = (pizza) => {
-    dispatch({ type: 'ADD_TO_CART', payload: pizza });
+    dispatch({ type: 'ADD_TO_CART', payload: pizza.id });
+  };
+
+  const removePizzaFromCart = (pizza) => {
+    dispatch({ type: 'REMOVE_FROM_CART', payload: pizza.id });
   };
 
   return (
@@ -37,7 +42,13 @@ export default function PizzaList() {
               {pizza.name} ${pizza.price}
             </ListGroupItemHeading>
             <ListGroupItemText>{pizza.description}</ListGroupItemText>
-            <Button onClick={() => addPizzaToCart(pizza)}>Add to Cart</Button>
+            {cart.includes(pizza.id) ? (
+              <Button onClick={() => removePizzaFromCart(pizza)}>
+                Remove from Cart
+              </Button>
+            ) : (
+              <Button onClick={() => addPizzaToCart(pizza)}>Add to Cart</Button>
+            )}
           </ListGroupItem>
         ))}
       </ListGroup>
