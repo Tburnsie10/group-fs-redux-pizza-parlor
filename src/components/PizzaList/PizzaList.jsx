@@ -20,6 +20,10 @@ export default function PizzaList() {
     });
   }, []);
 
+  const addPizzaToCart = (pizza) => {
+    dispatch({ type: 'ADD_TO_CART', payload: pizza.id });
+  };
+
   return (
     <div className="Table">
       <ListGroup flush>
@@ -32,10 +36,8 @@ export default function PizzaList() {
             <ListGroupItemHeading>
               {pizza.name} ${pizza.price}
             </ListGroupItemHeading>
-            <ListGroupItemText>
-              {pizza.description}
-            </ListGroupItemText>
-            <Button>Add to Cart</Button>
+            <ListGroupItemText>{pizza.description}</ListGroupItemText>
+            <Button onClick={() => addPizzaToCart(pizza)}>Add to Cart</Button>
           </ListGroupItem>
         ))}
       </ListGroup>
