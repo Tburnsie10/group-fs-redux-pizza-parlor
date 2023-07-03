@@ -13,6 +13,7 @@ import './PizzaList.css';
 export default function PizzaList() {
   const dispatch = useDispatch();
   const pizzaList = useSelector((store) => store.pizza);
+  const cartItems = useSelector((store) => store.cart);
 
   useEffect(() => {
     getPizzas().then((pizzas) => {
@@ -21,7 +22,7 @@ export default function PizzaList() {
   }, []);
 
   const addPizzaToCart = (pizza) => {
-    dispatch({ type: 'ADD_TO_CART', payload: pizza });
+    dispatch({ type: 'ADD_TO_CART', payload: pizza.id });
   };
 
   return (

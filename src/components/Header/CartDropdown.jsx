@@ -10,7 +10,9 @@ import {
 import CartDropdownItem from './CartDropdownItem';
 
 export default function CartDropdown() {
-  const cartItems = useSelector((store) => store.cart);
+  const cart = useSelector((store) => store.cart);
+  const pizzaList = useSelector((store) => store.pizza);
+  const cartItems = pizzaList.filter((pizza) => cart.includes(pizza.id));
   const cartTotal = cartItems.reduce((a, b) => a + Number(b.price), 0);
 
   return (
