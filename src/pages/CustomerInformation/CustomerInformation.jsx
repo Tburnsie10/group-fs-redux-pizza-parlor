@@ -10,8 +10,10 @@ import {
   Button,
 } from 'reactstrap';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function CustomerInformation() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [customerInfo, setCustomerInfo] = useState({
     customer_name: '',
@@ -28,6 +30,7 @@ export default function CustomerInformation() {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: 'SET_CUSTOMER_INFO', payload: customerInfo });
+    history.push('/checkout');
   };
 
   return (

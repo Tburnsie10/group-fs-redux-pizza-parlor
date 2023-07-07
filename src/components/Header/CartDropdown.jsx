@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { BsFillCartFill } from 'react-icons/bs';
@@ -35,7 +36,9 @@ export default function CartDropdown() {
           );
         })}
         <DropdownItem divider />
-        <DropdownItem>Checkout</DropdownItem>
+        <DropdownItem>
+          <Link to={'customer-info'}>Checkout</Link>
+        </DropdownItem>
       </DropdownMenu>
     </UncontrolledDropdown>
   );

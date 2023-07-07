@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <Layout>
-      <Router>
+    <Router>
+      <Layout>
         <Route exact path="/">
           <Home />
         </Route>
@@ -18,8 +18,8 @@ function App() {
         <Route path="/checkout">
           <Checkout />
         </Route>
-      </Router>
-    </Layout>
+      </Layout>
+    </Router>
   );
 }
 
