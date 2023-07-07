@@ -7,6 +7,7 @@ export const getOrders = () => {
 };
 
 export const addOrder = (order) => {
+  console.log("IN addOrder!!");
   return axios.post('/api/order', order).then(resolveData).catch(handleError);
 };
 

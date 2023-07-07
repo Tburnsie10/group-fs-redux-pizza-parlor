@@ -1,46 +1,48 @@
 import { useSelector } from 'react-redux';
+import { addOrder } from '../../modules/order.request';
 import {
+  Button,
   ListGroup,
   ListGroupItem,
   ListGroupItemText,
 } from 'reactstrap';
-// vvv tmp vvv
-import { useEffect } from 'react';
-import { getPizzas } from '../../modules/pizza.request';
-import { useDispatch } from 'react-redux';
-// ^^^ tmp ^^^
 
 export default function Checkout() {
   // const cart = useSelector((store) => store.cart);
-  // vvv tmp vvv
   const cart = [1, 2, 3];
-  // ^^^ tmp ^^^
   const pizzaList = useSelector((store) => store.pizza);
   const cartItems = pizzaList.filter((pizza) => cart.includes(pizza.id));
   const cartTotal = cartItems.reduce((a, b) => a + Number(b.price), 0);
 
-  // vvv tmp vvv
   const customerInfo = {
     customer_name: 'John Smith',
     street_address: '555 Applewood Lane',
     city: 'Minneapolis, MN',
     zip: '55111',
-  }
-  const dispatch = useDispatch();
-  useEffect(() => {
-    getPizzas().then((pizzas) => {
-      dispatch({ type: 'SET_PIZZA_LIST', payload: pizzas });
-    });
-  }, []);
-  // ^^^ tmp ^^^
+  };
+
+  const completeCheckout = () => {
+    const orderBody = {
+      ...customerInfo,
+      total: cartTotal,
+      type: 'Delivery',
+      pizzas: cart.map((id) => {
+        return { id: id, quantity: 1 };
+      }),
+    };
+    addOrder(orderBody);
+  };
 
   return (
     <div>
       <h2>Step 3: Checkout</h2>
       <div>
-        {customerInfo.customer_name}<br />
-        {customerInfo.street_address}<br />
-        {customerInfo.city} {customerInfo.zip}<br />
+        {customerInfo.customer_name}
+        <br />
+        {customerInfo.street_address}
+        <br />
+        {customerInfo.city} {customerInfo.zip}
+        <br />
       </div>
       <ListGroup flush>
         {}
@@ -57,9 +59,8 @@ export default function Checkout() {
           );
         })}
       </ListGroup>
-      <div>
-        Total: ${cartTotal}
-      </div>
+      <div>Total: ${cartTotal}</div>
+      <Button onClick={completeCheckout}>Checkout</Button>
     </div>
   );
 }
