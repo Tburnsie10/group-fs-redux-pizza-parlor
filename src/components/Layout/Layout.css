@@ -1,8 +1,8 @@
-.App {
+.Layout {
   text-align: center;
 }
 
-.App-header {
+.Layout-header {
   background-color: #222;
   height: 70px;
   padding: 20px;
@@ -10,6 +10,6 @@
   margin-bottom: 20px;
 }
 
-.App-title {
+.Layout-title {
   font-size: 2em;
 }
