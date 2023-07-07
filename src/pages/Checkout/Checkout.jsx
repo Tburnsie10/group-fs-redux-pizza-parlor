@@ -8,18 +8,11 @@ import {
 } from 'reactstrap';
 
 export default function Checkout() {
-  // const cart = useSelector((store) => store.cart);
-  const cart = [1, 2, 3];
+  const cart = useSelector((store) => store.cart);
+  const customerInfo = useSelector((store) => store.customer);
   const pizzaList = useSelector((store) => store.pizza);
   const cartItems = pizzaList.filter((pizza) => cart.includes(pizza.id));
   const cartTotal = cartItems.reduce((a, b) => a + Number(b.price), 0);
-
-  const customerInfo = {
-    customer_name: 'John Smith',
-    street_address: '555 Applewood Lane',
-    city: 'Minneapolis, MN',
-    zip: '55111',
-  };
 
   const completeCheckout = () => {
     const orderBody = {
