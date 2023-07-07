@@ -4,35 +4,20 @@ import {
   ListGroupItem,
   ListGroupItemText,
 } from 'reactstrap';
-// vvv tmp vvv
-import { useEffect } from 'react';
-import { getPizzas } from '../../modules/pizza.request';
-import { useDispatch } from 'react-redux';
-// ^^^ tmp ^^^
 
 export default function Checkout() {
   // const cart = useSelector((store) => store.cart);
-  // vvv tmp vvv
   const cart = [1, 2, 3];
-  // ^^^ tmp ^^^
   const pizzaList = useSelector((store) => store.pizza);
   const cartItems = pizzaList.filter((pizza) => cart.includes(pizza.id));
   const cartTotal = cartItems.reduce((a, b) => a + Number(b.price), 0);
 
-  // vvv tmp vvv
   const customerInfo = {
     customer_name: 'John Smith',
     street_address: '555 Applewood Lane',
     city: 'Minneapolis, MN',
     zip: '55111',
   }
-  const dispatch = useDispatch();
-  useEffect(() => {
-    getPizzas().then((pizzas) => {
-      dispatch({ type: 'SET_PIZZA_LIST', payload: pizzas });
-    });
-  }, []);
-  // ^^^ tmp ^^^
 
   return (
     <div>
