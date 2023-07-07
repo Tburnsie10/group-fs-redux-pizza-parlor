@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
+import { addOrder } from '../../modules/order.request';
 import {
+  Button,
   ListGroup,
   ListGroupItem,
   ListGroupItemText,
@@ -17,15 +19,30 @@ export default function Checkout() {
     street_address: '555 Applewood Lane',
     city: 'Minneapolis, MN',
     zip: '55111',
-  }
+  };
+
+  const completeCheckout = () => {
+    const orderBody = {
+      ...customerInfo,
+      total: cartTotal,
+      type: 'Delivery',
+      pizzas: cart.map((id) => {
+        return { id: id, quantity: 1 };
+      }),
+    };
+    addOrder(orderBody);
+  };
 
   return (
     <div>
       <h2>Step 3: Checkout</h2>
       <div>
-        {customerInfo.customer_name}<br />
-        {customerInfo.street_address}<br />
-        {customerInfo.city} {customerInfo.zip}<br />
+        {customerInfo.customer_name}
+        <br />
+        {customerInfo.street_address}
+        <br />
+        {customerInfo.city} {customerInfo.zip}
+        <br />
       </div>
       <ListGroup flush>
         {}
@@ -42,9 +59,8 @@ export default function Checkout() {
           );
         })}
       </ListGroup>
-      <div>
-        Total: ${cartTotal}
-      </div>
+      <div>Total: ${cartTotal}</div>
+      <Button onClick={completeCheckout}>Checkout</Button>
     </div>
   );
 }
