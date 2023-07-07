@@ -1,16 +1,24 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '../Layout/Layout';
-import Home from '../Home/Home';
-import { BrowserRouter, Route } from 'react-router-dom';
+import Home from '../../pages/Home/Home';
+import CustomerInformation from '../../pages/CustomerInformation/CustomerInformation';
+import Checkout from '../../pages/Checkout/Checkout';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
   return (
     <Layout>
-      <BrowserRouter>
+      <Router>
         <Route exact path="/">
           <Home />
         </Route>
-      </BrowserRouter>
+        <Route path="/customer-info">
+          <CustomerInformation />
+        </Route>
+        <Route path="/checkout">
+          <Checkout />
+        </Route>
+      </Router>
     </Layout>
   );
 }
