@@ -1,7 +1,7 @@
 import { FaPizzaSlice } from 'react-icons/fa';
 import CartDropdown from './CartDropdown';
 
-export default function header() {
+export default function Header() {
   return (
     <header className="navbar bg-primary mb-5 p-2">
       <div className="container-fluid text-white">

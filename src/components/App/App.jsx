@@ -1,18 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from '../Header/Header';
-import PizzaList from "../PizzaList/PizzaList";
-import './App.css';
+import Layout from '../Layout/Layout';
+import Home from '../Home/Home';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-      <div className="App">
-        <Header />
-        <img src="images/pizza_photo.png" />
-        <p>Pizza is great.</p>
-      </div>
-      <PizzaList />
-    </>
+    <Layout>
+      <BrowserRouter>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </BrowserRouter>
+    </Layout>
   );
 }
 
